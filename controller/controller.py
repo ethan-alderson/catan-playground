@@ -1,4 +1,5 @@
 import random
+import json
 
 class GameController:
     
@@ -13,6 +14,9 @@ class GameController:
         while self.running and self.state.turn_number < max_turns:
 
             self.execute_turn()
+            
+        else:
+            print(json.dumps(self.state.snapshot(), indent=4))
     
     
     def execute_turn(self):
@@ -45,11 +49,15 @@ class GameController:
         """
         TODO: connect to Board + intersections later
         """
-        pass
+        for i in range(0, 4):
+            p = self.state.get_player(i)
+            
+            for tile_index, tile in enumerate(self.state.board.tiles):
+                if tile.number == self.state.last_roll and tile_index in p.owned_tiles:
+                    p.resources.append(tile.resource)
+                    print(f'Distributed {tile.resource}') 
 
 
     def player_action(self, player):
-        """
-        TODO: bot logic will plug in here
-        """
-        pass
+        if len(player.owned_tiles) < 1:
+            player.owned_tiles.append(random.randint(0, 18))

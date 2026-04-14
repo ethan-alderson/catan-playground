@@ -1,6 +1,7 @@
+from typing import List
+
 from model.player import Player
 from model.board import Board
-from typing import List
 
 class GameState:
     
@@ -39,7 +40,6 @@ class GameState:
     def set_last_roll(self, roll: int):
         self.last_roll = roll
 
-
     # DEBUGGING INSPECTOR
     def snapshot(self) -> dict:
         """
@@ -51,6 +51,7 @@ class GameState:
             "current_player": self.curr_player_idx,
             "last_roll": self.last_roll,
             "phase": self.phase,
+            "players": [player.snapshot() for player in self.players],
         }
 
     
