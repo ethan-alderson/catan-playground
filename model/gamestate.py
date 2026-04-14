@@ -1,5 +1,5 @@
-from player import Player
-from board import Board
+from .player import Player
+from .board import Board
 from typing import List
 
 class GameState:
@@ -18,8 +18,8 @@ class GameState:
         self.last_roll = None
 
     # Define player access helpers        
-     def get_current_player(self) -> Player:
-        return self.players[self.current_player_index]
+    def get_current_player(self) -> Player:
+        return self.players[self.curr_player_idx]
 
 
     def get_player(self, player_id: int) -> Player:
@@ -27,8 +27,8 @@ class GameState:
     
     
     def advance_turn(self):
-        self.current_player_index = (
-            self.current_player_index + 1
+        self.curr_player_idx = (
+            self.curr_player_idx + 1
         ) % len(self.players)
 
         self.turn_number += 1
@@ -48,7 +48,7 @@ class GameState:
         """
         return {
             "turn_number": self.turn_number,
-            "current_player": self.current_player_index,
+            "current_player": self.curr_player_idx,
             "last_roll": self.last_roll,
             "phase": self.phase,
         }

@@ -1,4 +1,5 @@
-from resource import Resource
+from typing import List
+from .resource import Resource
 
 class Player:
     

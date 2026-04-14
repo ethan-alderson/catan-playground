@@ -1,9 +1,11 @@
-from tile import Tile
-from resource import Resource
+from typing import List
+
+from .tile import Tile
+from .resource import Resource
 
 class Board:
     
-    def __init__(self, tiles: List[Tile]) -> Board:
+    def __init__(self, tiles: List[Tile]):
         self.tiles = tiles
         
         # maps tile index to neighbor indices
