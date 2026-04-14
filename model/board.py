@@ -1,7 +1,7 @@
 from typing import List
 
-from .tile import Tile
-from .resource import Resource
+from model.tile import Tile
+from model.resource import Resource
 
 class Board:
     

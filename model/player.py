@@ -1,5 +1,5 @@
 from typing import List
-from .resource import Resource
+from model.resource import Resource
 
 class Player:
     

@@ -1,5 +1,5 @@
-from .player import Player
-from .board import Board
+from model.player import Player
+from model.board import Board
 from typing import List
 
 class GameState:
