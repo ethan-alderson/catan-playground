@@ -46,18 +46,19 @@ class GameController:
     
     
     def distribute_resources(self, roll):
-        """
-        TODO: connect to Board + intersections later
-        """
         for i in range(0, 4):
             p = self.state.get_player(i)
             
             for tile_index, tile in enumerate(self.state.board.tiles):
-                if tile.number == self.state.last_roll and tile_index in p.owned_tiles:
-                    p.resources.append(tile.resource)
-                    print(f'Distributed {tile.resource}') 
-
+                if tile.number == self.state.last_roll: 
+                    if any(
+                        tile_index in self.state.board.vertices[v].adjacent_tiles
+                        for v in p.owned_vertices
+                    ):
+                        p.resources.append(tile.resource)
+                        print(f'Distributed {tile.resource} to Player {i}')
 
     def player_action(self, player):
-        if len(player.owned_tiles) < 1:
-            player.owned_tiles.append(random.randint(0, 18)) 
+        if len(player.owned_vertices) < 1:
+            player.owned_vertices.append(random.randint(0, 53)) 
+            

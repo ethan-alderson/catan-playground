@@ -34,87 +34,90 @@ class Board:
         16: [12, 13, 17],
         17: [13, 14, 16, 18],
         18: [14, 15, 17],
-    }
+        }
         
-    self.vertices = [
-    # Top point of each row-0 hex
-    Vertex(0,  [0]),
-    Vertex(1,  [1]),
-    Vertex(2,  [2]),
+            
+        self.vertices = [
+        # Top point of each row-0 hex
+        Vertex(0,  [0]),
+        Vertex(1,  [1]),
+        Vertex(2,  [2]),
 
-    # Upper-left shoulders of row-0 hexes
-    Vertex(3,  [0]),
-    Vertex(4,  [0, 1]),
-    Vertex(5,  [1, 2]),
-    Vertex(6,  [2]),
+        # Upper-left shoulders of row-0 hexes
+        Vertex(3,  [0]),
+        Vertex(4,  [0, 1]),
+        Vertex(5,  [1, 2]),
+        Vertex(6,  [2]),
 
-    # Between row-0 and row-1
-    Vertex(7,  [0, 3]),
-    Vertex(8,  [0, 1, 4]),
-    Vertex(9,  [1, 2, 5]),
-    Vertex(10, [2, 6]),
+        # Between row-0 and row-1
+        Vertex(7,  [0, 3]),
+        Vertex(8,  [0, 1, 4]),
+        Vertex(9,  [1, 2, 5]),
+        Vertex(10, [2, 6]),
 
-    # Upper-left shoulders of row-1 hexes
-    Vertex(11, [3]),
-    Vertex(12, [0, 3, 4]),
-    Vertex(13, [1, 4, 5]),
-    Vertex(14, [2, 5, 6]),
-    Vertex(15, [6]),
+        # Upper-left shoulders of row-1 hexes
+        Vertex(11, [3]),
+        Vertex(12, [0, 3, 4]),
+        Vertex(13, [1, 4, 5]),
+        Vertex(14, [2, 5, 6]),
+        Vertex(15, [6]),
 
-    # Between row-1 and row-2
-    Vertex(16, [3, 7]),
-    Vertex(17, [3, 4, 8]),
-    Vertex(18, [4, 5, 9]),
-    Vertex(19, [5, 6, 10]),
-    Vertex(20, [6, 11]),
+        # Between row-1 and row-2
+        Vertex(16, [3, 7]),
+        Vertex(17, [3, 4, 8]),
+        Vertex(18, [4, 5, 9]),
+        Vertex(19, [5, 6, 10]),
+        Vertex(20, [6, 11]),
 
-    # Upper-left shoulders of row-2 hexes
-    Vertex(21, [7]),
-    Vertex(22, [3, 7, 8]),
-    Vertex(23, [4, 8, 9]),
-    Vertex(24, [5, 9, 10]),
-    Vertex(25, [6, 10, 11]),
-    Vertex(26, [11]),
+        # Upper-left shoulders of row-2 hexes
+        Vertex(21, [7]),
+        Vertex(22, [3, 7, 8]),
+        Vertex(23, [4, 8, 9]),
+        Vertex(24, [5, 9, 10]),
+        Vertex(25, [6, 10, 11]),
+        Vertex(26, [11]),
 
-    # Between row-2 and row-3
-    Vertex(27, [7]),
-    Vertex(28, [7, 8, 12]),
-    Vertex(29, [8, 9, 13]),
-    Vertex(30, [9, 10, 14]),
-    Vertex(31, [10, 11, 15]),
-    Vertex(32, [11]),
+        # Between row-2 and row-3
+        Vertex(27, [7]),
+        Vertex(28, [7, 8, 12]),
+        Vertex(29, [8, 9, 13]),
+        Vertex(30, [9, 10, 14]),
+        Vertex(31, [10, 11, 15]),
+        Vertex(32, [11]),
 
-    # Upper-left shoulders of row-3 hexes
-    Vertex(33, [7, 12]),
-    Vertex(34, [8, 12, 13]),
-    Vertex(35, [9, 13, 14]),
-    Vertex(36, [10, 14, 15]),
-    Vertex(37, [11, 15]),
+        # Upper-left shoulders of row-3 hexes
+        Vertex(33, [7, 12]),
+        Vertex(34, [8, 12, 13]),
+        Vertex(35, [9, 13, 14]),
+        Vertex(36, [10, 14, 15]),
+        Vertex(37, [11, 15]),
 
-    # Between row-3 and row-4
-    Vertex(38, [12]),
-    Vertex(39, [12, 13, 16]),
-    Vertex(40, [13, 14, 17]),
-    Vertex(41, [14, 15, 18]),
-    Vertex(42, [15]),
+        # Between row-3 and row-4
+        Vertex(38, [12]),
+        Vertex(39, [12, 13, 16]),
+        Vertex(40, [13, 14, 17]),
+        Vertex(41, [14, 15, 18]),
+        Vertex(42, [15]),
 
-    # Upper-left shoulders of row-4 hexes
-    Vertex(43, [12, 16]),
-    Vertex(44, [13, 16, 17]),
-    Vertex(45, [14, 17, 18]),
-    Vertex(46, [15, 18]),
+        # Upper-left shoulders of row-4 hexes
+        Vertex(43, [12, 16]),
+        Vertex(44, [13, 16, 17]),
+        Vertex(45, [14, 17, 18]),
+        Vertex(46, [15, 18]),
 
-    # Lower sides of row-4 hexes
-    Vertex(47, [16]),
-    Vertex(48, [16, 17]),
-    Vertex(49, [17, 18]),
-    Vertex(50, [18]),
+        # Lower sides of row-4 hexes
+        Vertex(47, [16]),
+        Vertex(48, [16, 17]),
+        Vertex(49, [17, 18]),
+        Vertex(50, [18]),
 
-    # Bottom points of row-4 hexes
-    Vertex(51, [16]),
-    Vertex(52, [17]),
-    Vertex(53, [18]),
-]
+        # Bottom points of row-4 hexes
+        Vertex(51, [16]),
+        Vertex(52, [17]),
+        Vertex(53, [18]),
+        ]
+        
+
             
     #     0   1   2
     #   3   4   5   6
