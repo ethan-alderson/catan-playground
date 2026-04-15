@@ -60,4 +60,4 @@ class GameController:
 
     def player_action(self, player):
         if len(player.owned_tiles) < 1:
-            player.owned_tiles.append(random.randint(0, 18))
+            player.owned_tiles.append(random.randint(0, 18)) 
