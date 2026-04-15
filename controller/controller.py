@@ -49,16 +49,21 @@ class GameController:
         for i in range(0, 4):
             p = self.state.get_player(i)
             
-            for tile_index, tile in enumerate(self.state.board.tiles):
-                if tile.number == self.state.last_roll: 
-                    if any(
-                        tile_index in self.state.board.vertices[v].adjacent_tiles
-                        for v in p.owned_vertices
-                    ):
+            for v in p.owned_vertices:
+                vertex = self.state.board.vertices[v]
+                
+                for tile_index in vertex.adjacent_tiles:
+                    tile = self.state.board.tiles[tile_index]
+                    
+                    if tile.number == roll:
                         p.resources.append(tile.resource)
                         print(f'Distributed {tile.resource} to Player {i}')
 
+
     def player_action(self, player):
         if len(player.owned_vertices) < 1:
-            player.owned_vertices.append(random.randint(0, 53)) 
+            v_idx = random.randint(0, 53)
+            player.owned_vertices.append(v_idx)
+            self.state.board.vertices[v_idx].owner = player
+            self.state.board.vertices[v_idx].value = 1
             
