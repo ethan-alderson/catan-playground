@@ -11,6 +11,7 @@ class ActionType(Enum):
     BUILD_SETTLEMENT = "build_settlement"
     BUILD_ROAD = "build_road"
     PASS = "pass"
+    BUILD_CITY = "build_city"
 
 @dataclass
 class Action:
@@ -49,10 +50,26 @@ def _apply_pass(game_state: "GameState", action: "Action", player: "Player"):
     """Handle pass action."""
     print(f"Player passed")
 
+def _apply_build_city(game_state: "GameState", action: "Action", player: "Player"):
+    """Handle building a settlement."""
+    if action.vertex is None:
+        raise ValueError("City build requires vertex")
+    
+    vertex = game_state.board.vertices[action.vertex]
+    if vertex.value = 0:
+        raise ValueError(f"Vertex {action.vertex} is not a settlement")
+    
+    # TODO: Check resources, adjacency rules, etc.
+    vertex.owner = player
+    vertex.value = 2  # city
+    player.owned_vertices.append(action.vertex)
+    player.vp += 1
+    print(f"Player built city at vertex {action.vertex}")
 
 # Handler registry - map action types to their handler functions
 ACTION_HANDLERS: dict[ActionType, Callable] = {
     ActionType.BUILD_SETTLEMENT: _apply_build_settlement,
     ActionType.BUILD_ROAD: _apply_build_road,
     ActionType.PASS: _apply_pass,
+    ActionType.BUILD_CITY: _apply_build_city
 }
