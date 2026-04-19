@@ -2,6 +2,7 @@ from typing import List
 
 from model.player import Player
 from model.board import Board
+from model.action import Action, ActionType, ACTION_HANDLERS
 
 class GameState:
     
@@ -53,6 +54,14 @@ class GameState:
             "phase": self.phase,
             "players": [player.snapshot() for player in self.players],
         }
+        
+    def apply_action(self, action: Action, player: Player):
+        """Apply an action to the game state by delegating to the action handler."""
+        handler = ACTION_HANDLERS.get(action.type)
+        if handler:
+            handler(self, action, player)
+        else:
+            raise ValueError(f"Unknown action type: {action.type}")
 
     
     

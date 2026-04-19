@@ -1,6 +1,8 @@
 import random
 import json
 
+from model.action import Action, ActionType
+
 class GameController:
     
     def __init__(self, game_state):
@@ -36,7 +38,8 @@ class GameController:
         self.distribute_resources(roll)
 
         # 3. Player action phase (stub bot)
-        self.player_action(player)
+        action = self.player_action(player)
+        self.state.apply_action(action, player)
 
         # 4. Advance turn
         self.state.advance_turn()
@@ -61,9 +64,32 @@ class GameController:
 
 
     def player_action(self, player):
-        if len(player.owned_vertices) < 1:
-            v_idx = random.randint(0, 53)
-            player.owned_vertices.append(v_idx)
-            self.state.board.vertices[v_idx].owner = player
-            self.state.board.vertices[v_idx].value = 1
+        print(f"Owned vertices: {player.owned_vertices}")
+        
+        # Currently we have random actions
+        # Player 1 manual via print player 2-4 could make random for testing
+    
+        action_type = random.randint(0,2)
+        print(f'action: {action_type}')
+        if action_type == 0:
+            v_idx = random.randint(0,53)
+            return Action(type=ActionType.BUILD_SETTLEMENT, vertex=v_idx)
+        else:
+            return Action(type=ActionType.PASS)
+            
+            
+        # action_type = input("Enter action (build/pass): ")
+        
+        # if action_type == "build":
+        #     v_idx = int(input("Enter vertex index (0-53): "))
+        #     return Action(type="build_settlement", vertex=v_idx)
+        
+        # return Action(type="pass")
+    
+    
+        # if len(player.owned_vertices) < 1:
+        #     v_idx = random.randint(0, 53)
+        #     player.owned_vertices.append(v_idx)
+        #     self.state.board.vertices[v_idx].owner = player
+        #     self.state.board.vertices[v_idx].value = 1
             
